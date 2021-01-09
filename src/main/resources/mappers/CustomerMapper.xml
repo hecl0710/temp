@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hx.hxtspro.dao.CustomerMapper">
+  <resultMap id="CustomerResultMap" type="com.hx.hxtspro.entity.Customer">
+    <id column="CUST_ID" jdbcType="VARCHAR" property="custId" />
+    <result column="CUST_NAME" jdbcType="VARCHAR" property="custName" />
+    <result column="BUSINESS_LICENCE" jdbcType="VARCHAR" property="businessLicence" />
+    <result column="MCC" jdbcType="VARCHAR" property="mcc" />
+    <result column="LEGAL_ID" jdbcType="VARCHAR" property="legalId" />
+    <result column="LEGAL_NAME" jdbcType="VARCHAR" property="legalName" />
+    <result column="ACCOUNT_NO" jdbcType="VARCHAR" property="accountNo" />
+    <result column="ACCOUNT_NAME" jdbcType="VARCHAR" property="accountName" />
+    <result column="ACCOUNT_BANK" jdbcType="VARCHAR" property="accountBank" />
+    <result column="PHONE" jdbcType="VARCHAR" property="phone" />
+    <result column="ADDRESS" jdbcType="VARCHAR" property="address" />
+    <result column="STATUS" jdbcType="VARCHAR" property="status" />
+    <result column="AGREEMENT" jdbcType="VARCHAR" property="agreement" />
+    <result column="SERVICE_FEE" jdbcType="VARCHAR" property="serviceFee" />
+    <result column="CREATE_TIME" jdbcType="VARCHAR" property="createTime" />
+    <result column="UPDATE_TIME" jdbcType="VARCHAR" property="updateTime" />
+    <result column="OPT_USER" jdbcType="VARCHAR" property="optUser" />
+    <result column="COMPANY_BUSINESS" jdbcType="VARCHAR" property="companyBusiness" />
+  </resultMap>
+<!--  <sql id="Example_Where_Clause">-->
+<!--    <where>-->
+<!--      <foreach collection="oredCriteria" item="criteria" separator="or">-->
+<!--        <if test="criteria.valid">-->
+<!--          <trim prefix="(" prefixOverrides="and" suffix=")">-->
+<!--            <foreach collection="criteria.criteria" item="criterion">-->
+<!--              <choose>-->
+<!--                <when test="criterion.noValue">-->
+<!--                  and ${criterion.condition}-->
+<!--                </when>-->
+<!--                <when test="criterion.singleValue">-->
+<!--                  and ${criterion.condition} #{criterion.value}-->
+<!--                </when>-->
+<!--                <when test="criterion.betweenValue">-->
+<!--                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}-->
+<!--                </when>-->
+<!--                <when test="criterion.listValue">-->
+<!--                  and ${criterion.condition}-->
+<!--                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">-->
+<!--                    #{listItem}-->
+<!--                  </foreach>-->
+<!--                </when>-->
+<!--              </choose>-->
+<!--            </foreach>-->
+<!--          </trim>-->
+<!--        </if>-->
+<!--      </foreach>-->
+<!--    </where>-->
+<!--  </sql>-->
+<!--  <sql id="Update_By_Example_Where_Clause">-->
+<!--    <where>-->
+<!--      <foreach collection="example.oredCriteria" item="criteria" separator="or">-->
+<!--        <if test="criteria.valid">-->
+<!--          <trim prefix="(" prefixOverrides="and" suffix=")">-->
+<!--            <foreach collection="criteria.criteria" item="criterion">-->
+<!--              <choose>-->
+<!--                <when test="criterion.noValue">-->
+<!--                  and ${criterion.condition}-->
+<!--                </when>-->
+<!--                <when test="criterion.singleValue">-->
+<!--                  and ${criterion.condition} #{criterion.value}-->
+<!--                </when>-->
+<!--                <when test="criterion.betweenValue">-->
+<!--                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}-->
+<!--                </when>-->
+<!--                <when test="criterion.listValue">-->
+<!--                  and ${criterion.condition}-->
+<!--                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">-->
+<!--                    #{listItem}-->
+<!--                  </foreach>-->
+<!--                </when>-->
+<!--              </choose>-->
+<!--            </foreach>-->
+<!--          </trim>-->
+<!--        </if>-->
+<!--      </foreach>-->
+<!--    </where>-->
+<!--  </sql>-->
+<!--  <sql id="Base_Column_List">-->
+<!--    CUST_NAME, CUST_ID, BUSINESS_LICENCE, MCC, LEGAL_ID, LEGAL_NAME, ACCOUNT_NO, ACCOUNT_NAME, -->
+<!--    ACCOUNT_BANK, PHONE, ADDRESS, STATUS, AGREEMENT, SERVICE_FEE, CREATE_TIME, UPDATE_TIME, -->
+<!--    OPT_USER, COMPANY_BUSINESS-->
+<!--  </sql>-->
+<!--  <select id="selectByExample" parameterType="com.hx.hxtspro.entity.CustomerExample" resultMap="BaseResultMap">-->
+<!--    select-->
+<!--    <if test="distinct">-->
+<!--      distinct-->
+<!--    </if>-->
+<!--    <include refid="Base_Column_List" />-->
+<!--    from T_CUSTOMER_INFO-->
+<!--    <if test="_parameter != null">-->
+<!--      <include refid="Example_Where_Clause" />-->
+<!--    </if>-->
+<!--    <if test="orderByClause != null">-->
+<!--      order by ${orderByClause}-->
+<!--    </if>-->
+<!--  </select>-->
+<!--  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">-->
+<!--    select -->
+<!--    <include refid="Base_Column_List" />-->
+<!--    from T_CUSTOMER_INFO-->
+<!--    where CUST_NAME = #{custName,jdbcType=VARCHAR}-->
+<!--  </select>-->
+<!--  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">-->
+<!--    delete from T_CUSTOMER_INFO-->
+<!--    where CUST_NAME = #{custName,jdbcType=VARCHAR}-->
+<!--  </delete>-->
+<!--  <delete id="deleteByExample" parameterType="com.hx.hxtspro.entity.CustomerExample">-->
+<!--    delete from T_CUSTOMER_INFO-->
+<!--    <if test="_parameter != null">-->
+<!--      <include refid="Example_Where_Clause" />-->
+<!--    </if>-->
+<!--  </delete>-->
+<!--  <insert id="insert" parameterType="com.hx.hxtspro.entity.Customer">-->
+<!--    insert into T_CUSTOMER_INFO (CUST_NAME, CUST_ID, BUSINESS_LICENCE, -->
+<!--      MCC, LEGAL_ID, LEGAL_NAME, -->
+<!--      ACCOUNT_NO, ACCOUNT_NAME, ACCOUNT_BANK, -->
+<!--      PHONE, ADDRESS, STATUS, -->
+<!--      AGREEMENT, SERVICE_FEE, CREATE_TIME, -->
+<!--      UPDATE_TIME, OPT_USER, COMPANY_BUSINESS-->
+<!--      )-->
+<!--    values (#{custName,jdbcType=VARCHAR}, #{custId,jdbcType=VARCHAR}, #{businessLicence,jdbcType=VARCHAR}, -->
+<!--      #{mcc,jdbcType=VARCHAR}, #{legalId,jdbcType=VARCHAR}, #{legalName,jdbcType=VARCHAR}, -->
+<!--      #{accountNo,jdbcType=VARCHAR}, #{accountName,jdbcType=VARCHAR}, #{accountBank,jdbcType=VARCHAR}, -->
+<!--      #{phone,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, -->
+<!--      #{agreement,jdbcType=VARCHAR}, #{serviceFee,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}, -->
+<!--      #{updateTime,jdbcType=VARCHAR}, #{optUser,jdbcType=VARCHAR}, #{companyBusiness,jdbcType=VARCHAR}-->
+<!--      )-->
+<!--  </insert>-->
+<!--  <insert id="insertSelective" parameterType="com.hx.hxtspro.entity.Customer">-->
+<!--    insert into T_CUSTOMER_INFO-->
+<!--    <trim prefix="(" suffix=")" suffixOverrides=",">-->
+<!--      <if test="custName != null">-->
+<!--        CUST_NAME,-->
+<!--      </if>-->
+<!--      <if test="custId != null">-->
+<!--        CUST_ID,-->
+<!--      </if>-->
+<!--      <if test="businessLicence != null">-->
+<!--        BUSINESS_LICENCE,-->
+<!--      </if>-->
+<!--      <if test="mcc != null">-->
+<!--        MCC,-->
+<!--      </if>-->
+<!--      <if test="legalId != null">-->
+<!--        LEGAL_ID,-->
+<!--      </if>-->
+<!--      <if test="legalName != null">-->
+<!--        LEGAL_NAME,-->
+<!--      </if>-->
+<!--      <if test="accountNo != null">-->
+<!--        ACCOUNT_NO,-->
+<!--      </if>-->
+<!--      <if test="accountName != null">-->
+<!--        ACCOUNT_NAME,-->
+<!--      </if>-->
+<!--      <if test="accountBank != null">-->
+<!--        ACCOUNT_BANK,-->
+<!--      </if>-->
+<!--      <if test="phone != null">-->
+<!--        PHONE,-->
+<!--      </if>-->
+<!--      <if test="address != null">-->
+<!--        ADDRESS,-->
+<!--      </if>-->
+<!--      <if test="status != null">-->
+<!--        STATUS,-->
+<!--      </if>-->
+<!--      <if test="agreement != null">-->
+<!--        AGREEMENT,-->
+<!--      </if>-->
+<!--      <if test="serviceFee != null">-->
+<!--        SERVICE_FEE,-->
+<!--      </if>-->
+<!--      <if test="createTime != null">-->
+<!--        CREATE_TIME,-->
+<!--      </if>-->
+<!--      <if test="updateTime != null">-->
+<!--        UPDATE_TIME,-->
+<!--      </if>-->
+<!--      <if test="optUser != null">-->
+<!--        OPT_USER,-->
+<!--      </if>-->
+<!--      <if test="companyBusiness != null">-->
+<!--        COMPANY_BUSINESS,-->
+<!--      </if>-->
+<!--    </trim>-->
+<!--    <trim prefix="values (" suffix=")" suffixOverrides=",">-->
+<!--      <if test="custName != null">-->
+<!--        #{custName,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="custId != null">-->
+<!--        #{custId,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="businessLicence != null">-->
+<!--        #{businessLicence,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="mcc != null">-->
+<!--        #{mcc,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="legalId != null">-->
+<!--        #{legalId,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="legalName != null">-->
+<!--        #{legalName,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="accountNo != null">-->
+<!--        #{accountNo,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="accountName != null">-->
+<!--        #{accountName,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="accountBank != null">-->
+<!--        #{accountBank,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="phone != null">-->
+<!--        #{phone,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="address != null">-->
+<!--        #{address,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="status != null">-->
+<!--        #{status,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="agreement != null">-->
+<!--        #{agreement,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="serviceFee != null">-->
+<!--        #{serviceFee,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="createTime != null">-->
+<!--        #{createTime,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="updateTime != null">-->
+<!--        #{updateTime,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="optUser != null">-->
+<!--        #{optUser,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="companyBusiness != null">-->
+<!--        #{companyBusiness,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--    </trim>-->
+<!--  </insert>-->
+<!--  <select id="countByExample" parameterType="com.hx.hxtspro.entity.CustomerExample" resultType="java.lang.Long">-->
+<!--    select count(*) from T_CUSTOMER_INFO-->
+<!--    <if test="_parameter != null">-->
+<!--      <include refid="Example_Where_Clause" />-->
+<!--    </if>-->
+<!--  </select>-->
+<!--  <update id="updateByExampleSelective" parameterType="map">-->
+<!--    update T_CUSTOMER_INFO-->
+<!--    <set>-->
+<!--      <if test="record.custName != null">-->
+<!--        CUST_NAME = #{record.custName,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="record.custId != null">-->
+<!--        CUST_ID = #{record.custId,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="record.businessLicence != null">-->
+<!--        BUSINESS_LICENCE = #{record.businessLicence,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="record.mcc != null">-->
+<!--        MCC = #{record.mcc,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="record.legalId != null">-->
+<!--        LEGAL_ID = #{record.legalId,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="record.legalName != null">-->
+<!--        LEGAL_NAME = #{record.legalName,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="record.accountNo != null">-->
+<!--        ACCOUNT_NO = #{record.accountNo,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="record.accountName != null">-->
+<!--        ACCOUNT_NAME = #{record.accountName,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="record.accountBank != null">-->
+<!--        ACCOUNT_BANK = #{record.accountBank,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="record.phone != null">-->
+<!--        PHONE = #{record.phone,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="record.address != null">-->
+<!--        ADDRESS = #{record.address,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="record.status != null">-->
+<!--        STATUS = #{record.status,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="record.agreement != null">-->
+<!--        AGREEMENT = #{record.agreement,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="record.serviceFee != null">-->
+<!--        SERVICE_FEE = #{record.serviceFee,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="record.createTime != null">-->
+<!--        CREATE_TIME = #{record.createTime,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="record.updateTime != null">-->
+<!--        UPDATE_TIME = #{record.updateTime,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="record.optUser != null">-->
+<!--        OPT_USER = #{record.optUser,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="record.companyBusiness != null">-->
+<!--        COMPANY_BUSINESS = #{record.companyBusiness,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--    </set>-->
+<!--    <if test="_parameter != null">-->
+<!--      <include refid="Update_By_Example_Where_Clause" />-->
+<!--    </if>-->
+<!--  </update>-->
+<!--  <update id="updateByExample" parameterType="map">-->
+<!--    update T_CUSTOMER_INFO-->
+<!--    set CUST_NAME = #{record.custName,jdbcType=VARCHAR},-->
+<!--      CUST_ID = #{record.custId,jdbcType=VARCHAR},-->
+<!--      BUSINESS_LICENCE = #{record.businessLicence,jdbcType=VARCHAR},-->
+<!--      MCC = #{record.mcc,jdbcType=VARCHAR},-->
+<!--      LEGAL_ID = #{record.legalId,jdbcType=VARCHAR},-->
+<!--      LEGAL_NAME = #{record.legalName,jdbcType=VARCHAR},-->
+<!--      ACCOUNT_NO = #{record.accountNo,jdbcType=VARCHAR},-->
+<!--      ACCOUNT_NAME = #{record.accountName,jdbcType=VARCHAR},-->
+<!--      ACCOUNT_BANK = #{record.accountBank,jdbcType=VARCHAR},-->
+<!--      PHONE = #{record.phone,jdbcType=VARCHAR},-->
+<!--      ADDRESS = #{record.address,jdbcType=VARCHAR},-->
+<!--      STATUS = #{record.status,jdbcType=VARCHAR},-->
+<!--      AGREEMENT = #{record.agreement,jdbcType=VARCHAR},-->
+<!--      SERVICE_FEE = #{record.serviceFee,jdbcType=VARCHAR},-->
+<!--      CREATE_TIME = #{record.createTime,jdbcType=VARCHAR},-->
+<!--      UPDATE_TIME = #{record.updateTime,jdbcType=VARCHAR},-->
+<!--      OPT_USER = #{record.optUser,jdbcType=VARCHAR},-->
+<!--      COMPANY_BUSINESS = #{record.companyBusiness,jdbcType=VARCHAR}-->
+<!--    <if test="_parameter != null">-->
+<!--      <include refid="Update_By_Example_Where_Clause" />-->
+<!--    </if>-->
+<!--  </update>-->
+<!--  <update id="updateByPrimaryKeySelective" parameterType="com.hx.hxtspro.entity.Customer">-->
+<!--    update T_CUSTOMER_INFO-->
+<!--    <set>-->
+<!--      <if test="custId != null">-->
+<!--        CUST_ID = #{custId,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="businessLicence != null">-->
+<!--        BUSINESS_LICENCE = #{businessLicence,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="mcc != null">-->
+<!--        MCC = #{mcc,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="legalId != null">-->
+<!--        LEGAL_ID = #{legalId,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="legalName != null">-->
+<!--        LEGAL_NAME = #{legalName,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="accountNo != null">-->
+<!--        ACCOUNT_NO = #{accountNo,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="accountName != null">-->
+<!--        ACCOUNT_NAME = #{accountName,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="accountBank != null">-->
+<!--        ACCOUNT_BANK = #{accountBank,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="phone != null">-->
+<!--        PHONE = #{phone,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="address != null">-->
+<!--        ADDRESS = #{address,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="status != null">-->
+<!--        STATUS = #{status,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="agreement != null">-->
+<!--        AGREEMENT = #{agreement,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="serviceFee != null">-->
+<!--        SERVICE_FEE = #{serviceFee,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="createTime != null">-->
+<!--        CREATE_TIME = #{createTime,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="updateTime != null">-->
+<!--        UPDATE_TIME = #{updateTime,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="optUser != null">-->
+<!--        OPT_USER = #{optUser,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="companyBusiness != null">-->
+<!--        COMPANY_BUSINESS = #{companyBusiness,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--    </set>-->
+<!--    where CUST_NAME = #{custName,jdbcType=VARCHAR}-->
+<!--  </update>-->
+<!--  <update id="updateByPrimaryKey" parameterType="com.hx.hxtspro.entity.Customer">-->
+<!--    update T_CUSTOMER_INFO-->
+<!--    set CUST_ID = #{custId,jdbcType=VARCHAR},-->
+<!--      BUSINESS_LICENCE = #{businessLicence,jdbcType=VARCHAR},-->
+<!--      MCC = #{mcc,jdbcType=VARCHAR},-->
+<!--      LEGAL_ID = #{legalId,jdbcType=VARCHAR},-->
+<!--      LEGAL_NAME = #{legalName,jdbcType=VARCHAR},-->
+<!--      ACCOUNT_NO = #{accountNo,jdbcType=VARCHAR},-->
+<!--      ACCOUNT_NAME = #{accountName,jdbcType=VARCHAR},-->
+<!--      ACCOUNT_BANK = #{accountBank,jdbcType=VARCHAR},-->
+<!--      PHONE = #{phone,jdbcType=VARCHAR},-->
+<!--      ADDRESS = #{address,jdbcType=VARCHAR},-->
+<!--      STATUS = #{status,jdbcType=VARCHAR},-->
+<!--      AGREEMENT = #{agreement,jdbcType=VARCHAR},-->
+<!--      SERVICE_FEE = #{serviceFee,jdbcType=VARCHAR},-->
+<!--      CREATE_TIME = #{createTime,jdbcType=VARCHAR},-->
+<!--      UPDATE_TIME = #{updateTime,jdbcType=VARCHAR},-->
+<!--      OPT_USER = #{optUser,jdbcType=VARCHAR},-->
+<!--      COMPANY_BUSINESS = #{companyBusiness,jdbcType=VARCHAR}-->
+<!--    where CUST_NAME = #{custName,jdbcType=VARCHAR}-->
+<!--  </update>-->
+
+  <!--自定义部分-->
+  <select id="queryCustomer" parameterType="Customer" resultMap="CustomerResultMap">
+    SELECT * FROM T_CUSTOMER_INFO T
+    <where>
+      <if test="custId != null and custId != ''">
+        CUST_ID = #{custId,jdbcType=VARCHAR}
+      </if>
+      <if test="custName != null and custName != ''">
+        AND CUST_NAME = #{custName,jdbcType=VARCHAR}
+      </if>
+      <if test="businessLicence != null and businessLicence != ''">
+        AND BUSINESS_LICENCE = #{businessLicence,jdbcType=VARCHAR}
+      </if>
+      <if test="phone != null">
+        AND PHONE = #{phone,jdbcType=VARCHAR}
+      </if>
+      <if test="status != null">
+        AND STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        AND CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        AND UPDATE_TIME = #{updateTime,jdbcType=VARCHAR},
+      </if>
+    </where>
+  </select>
+</mapper>
